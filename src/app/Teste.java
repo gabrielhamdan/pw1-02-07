@@ -13,9 +13,9 @@ public class Teste {
 
 	public static void main(String[] args) {
 		while(true) {
-			String op = JOptionPane.showInputDialog(null, "1. Cadastrar membro\n2. Cadastrar livro");
+			String op = JOptionPane.showInputDialog(null, imprimeMenu());
 			
-			if(op == null) continue;
+			if(op == null) break;
 			
 			if(op.equals("1"))
 				cadastraMembro();
@@ -30,14 +30,21 @@ public class Teste {
 				JOptionPane.showMessageDialog(null, biblioteca.listarTodosLivros());
 			
 			if(op.equals("5"))
-				;
+				pesquisaMembro();
 			
 			if(op.equals("6"))
-				;
+				pesquisaLivro();
 			
-			if(op.equals("sair"))
+			if(op.equals("sair") || op.equals("7"))
 				break;
 		}
+	}
+	
+	private static String imprimeMenu() {
+		String menu = "";
+		for (EOpcoesMenu op : EOpcoesMenu.values())
+			menu += String.format("%d. %s\n", op.getOp(), op.getDesc());
+		return menu;
 	}
 
 	private static void cadastraMembro() {
@@ -51,6 +58,14 @@ public class Teste {
 		String autor = JOptionPane.showInputDialog(null, "Digite o nome do autor: ");
 		String isbn = JOptionPane.showInputDialog(null, "Digite o ISBN: ");
 		biblioteca.cadastrarLivro(new Livro(titulo, autor, isbn));
+	}
+	
+	private static boolean pesquisaMembro() {
+		return false;
+	}
+	
+	private static boolean pesquisaLivro() {
+		return false;
 	}
 
 }
